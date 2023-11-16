@@ -2,11 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Image {
+  id: ID!
+  url: String!
+  priority: Float!
+}
+
 type Product {
   id: ID!
   name: String!
   price: Float!
   status: Status!
+  images: [Image!]!
 }
 
 enum Status {
@@ -14,15 +21,11 @@ enum Status {
   inactive
 }
 
-type Image {
-  id: ID!
-  url: String!
-  priority: Float!
-}
-
 type Query {
   products: [Product!]!
   product(id: String!): Product!
+  images: [Image!]!
+  image(id: String!): Image!
 }
 
 type Mutation {
@@ -30,12 +33,14 @@ type Mutation {
   updateProduct(id: String!, input: UpdateProductInput!): Product!
   deleteProduct(id: String!): Boolean!
   createImage(input: CreateImageInput!): Image!
+  deleteImage(id: String!): Boolean!
 }
 
 input CreateProductInput {
   name: String!
   price: Float!
   status: Status!
+  images: [ID!]! = []
 }
 
 input UpdateProductInput {

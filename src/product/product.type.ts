@@ -1,5 +1,7 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
 import { Status } from "./status.enum";
+import { ImageType } from "../image/image.type";
+
 
 @ObjectType('Product')
 export class ProductType {
@@ -16,6 +18,6 @@ export class ProductType {
     @Field(type => Status)
     status: Status;
 
-    //Field(type => [ImageType])
-    // images: string[];
+    @Field(type => [ImageType])
+    images: string[];
 }

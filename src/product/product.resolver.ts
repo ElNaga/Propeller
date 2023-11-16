@@ -9,16 +9,7 @@ export class ProductResolver {
     constructor(
         private productService: ProductService
     ) {}
-    // here define queries or mutations
-    // @Query(returns => ProductType)
-    // product() {
-    //     return {
-    //         id: 'asdasd',
-    //         name: 'nameOfProduct',
-    //         price: 34243,
-    //         status: 'active',
-    //     }
-    // }
+
     @Query(returns => [ProductType])
     products() {
         return this.productService.getAllProducts();
