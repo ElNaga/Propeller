@@ -1,7 +1,6 @@
 import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { ProductType } from "./product.type";
 import { ProductService } from "./product.service";
-import { Status } from "./status.enum";
 import { CreateProductInput } from "./create-product.input";
 import { UpdateProductInput } from "./update-product.input";
 

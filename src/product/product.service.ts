@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './product.entity';
-import { ID } from "@nestjs/graphql";
 import { Repository } from 'typeorm';
 import { v4 as uuid} from 'uuid'
 import { CreateProductInput } from './create-product.input';

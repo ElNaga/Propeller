@@ -5,6 +5,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ProductModule } from './product/product.module';
 import { Product } from './product/product.entity';
 import { ProductService } from './product/product.service';
+import { ImageModule } from './image/image.module';
+import { Image } from './image/image.entity';
 
 @Module({
   imports: [
@@ -14,7 +16,8 @@ import { ProductService } from './product/product.service';
       synchronize: true,
       useUnifiedTopology: true,
       entities: [
-        Product
+        Product,
+        Image
       ]
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -22,6 +25,7 @@ import { ProductService } from './product/product.service';
       autoSchemaFile: 'schema.gql',
     }),
     ProductModule,
+    ImageModule,
   ],
   // providers: [ProductService],
 })
