@@ -1,5 +1,7 @@
 import { Entity, ObjectIdColumn, Column, PrimaryColumn } from 'typeorm';
 import { Status } from './status.enum';
+import { ImageType } from '../image/image.type';
+import { CreateImageInput } from 'src/image/create-image.input';
 
 @Entity()
 export class Product {
@@ -18,4 +20,7 @@ export class Product {
 
   @Column()
   status: Status;
+
+  @Column()
+  images: string[]
 }

@@ -1,9 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Image } from './image.entity';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { CreateImageInput } from './create-image.input';
+import { UpdateImageInput } from './update-image.input';
 
 @Injectable()
 export class ImageService {
@@ -21,6 +22,17 @@ export class ImageService {
     return this.imageRepository.save(image);
   }
 
+  async updateImageById(id: string, updateImageInput: UpdateImageInput): Promise<Image> {
+    const product = await this.imageRepository.findOne({ where: {id} });
+    if (!product) {
+        throw new Error('Product not found');
+    }
+
+    Object.assign(product, updateImageInput);
+
+    return this.imageRepository.save(product);
+}
+
   async deleteImage(id: string): Promise<boolean> {
     const result = await this.imageRepository.delete({id: id});
     if (result.affected === 0) {
@@ -35,5 +47,15 @@ export class ImageService {
 
   async getOneImage(id: string): Promise<Image> {
     return this.imageRepository.findOne({ where: { id } });
+  }
+
+  async getManyImages(imagesIds: string[]): Promise<Image[]> {
+    return await this.imageRepository.find({
+      where: {
+        id: {
+          $in: imagesIds 
+        } as any,
+      },
+    });
   }
 }

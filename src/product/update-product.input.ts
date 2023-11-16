@@ -1,7 +1,6 @@
-import { InputType,Field } from "@nestjs/graphql";
+import { InputType,Field, ID } from "@nestjs/graphql";
 import { Status } from "./status.enum";
 import { IsEnum, MinLength, IsNumber } from "class-validator";
-import { ImageType } from "../image/image.type";
 
 
 @InputType()
@@ -19,7 +18,7 @@ export class UpdateProductInput {
     @Field(type => Status)
     status: Status;
 
-    @Field(type => [ImageType], { nullable: true })
-    images?: ImageType[];
+    @Field(() => [ID], { nullable: true }) // Optional
+    images?: string[];
 
 }

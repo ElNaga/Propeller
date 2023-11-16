@@ -2,7 +2,7 @@ import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { ImageType } from "./image.type";
 import { ImageService } from "./image.service";
 import { CreateImageInput } from "./create-image.input";
-// import { UpdateImageInput } from "./update-image.input";
+import { UpdateImageInput } from "./update-image.input";
 
 @Resolver(of => ImageType) 
 export class ImageResolver {
@@ -26,6 +26,14 @@ export class ImageResolver {
 
     ) {
         return this.imageService.createImage(input);
+    }
+
+    @Mutation(returns => ImageType)
+    updateImage(
+        @Args('id') id: string, 
+        @Args('input') input: UpdateImageInput,
+    ) {
+        return this.imageService.updateImageById(id, input);
     }
 
     @Mutation(returns => Boolean)

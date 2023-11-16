@@ -8,6 +8,7 @@ import { ImageResolver } from './image.resolver';
   imports: [
     TypeOrmModule.forFeature([Image])
   ],
-  providers: [ImageResolver, ImageService]
+  providers: [ImageResolver, ImageService],
+  exports: [ImageService]
 })
 export class ImageModule {}

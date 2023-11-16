@@ -18,6 +18,6 @@ export class ProductType {
     @Field(type => Status)
     status: Status;
 
-    @Field(type => [ImageType])
+    @Field(type => [ImageType], {nullable: true})
     images: string[];
 }

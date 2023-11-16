@@ -13,13 +13,22 @@ export class ProductService {
     ) {}
 
     async createProduct(createProductInput: CreateProductInput): Promise<Product> {
-        const {name, price, status} = createProductInput;
+        const {name, price, status, images} = createProductInput;
+    
         const product = this.productRepository.create({
             id: uuid(),
             name,
             price,
             status,
+            images,
         });
+
+        return this.productRepository.save(product);
+    }
+
+    async assignImageToProduct(productId: string, imagesIds: string[]): Promise<Product> {
+        const product = await this.productRepository.findOne({where: {id : productId}});
+        product.images = [...product.images, ...imagesIds]
 
         return this.productRepository.save(product);
     }

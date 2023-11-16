@@ -13,7 +13,7 @@ type Product {
   name: String!
   price: Float!
   status: Status!
-  images: [Image!]!
+  images: [Image!]
 }
 
 enum Status {
@@ -30,9 +30,11 @@ type Query {
 
 type Mutation {
   createProduct(input: CreateProductInput!): Product!
+  assignImagesToProduct(assignImagesToProduct: AssignImagesToProductInput!): Product!
   updateProduct(id: String!, input: UpdateProductInput!): Product!
   deleteProduct(id: String!): Boolean!
   createImage(input: CreateImageInput!): Image!
+  updateImage(id: String!, input: UpdateImageInput!): Image!
   deleteImage(id: String!): Boolean!
 }
 
@@ -43,13 +45,24 @@ input CreateProductInput {
   images: [ID!]! = []
 }
 
+input AssignImagesToProductInput {
+  productId: ID!
+  imagesIds: [ID!]!
+}
+
 input UpdateProductInput {
   name: String!
   price: Float!
   status: Status!
+  images: [ID!]
 }
 
 input CreateImageInput {
   url: String! = "https://images.unsplash.com/photo-1615789591457-74a63395c990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
   priority: Float! = 1000
+}
+
+input UpdateImageInput {
+  url: String!
+  priority: Float!
 }
