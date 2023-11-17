@@ -8,7 +8,9 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "kill": "kill -9 $(lsof -ti :10001) & kill -9 $(lsof -ti :80) & kill -9 $(lsof -ti :10000)",
     "start": "nest start",
+    "start:concurent": "nest start & node proxy/index.js &  node rest/index.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",

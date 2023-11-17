@@ -6,5 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(10001);
+  console.log('[GQL] service succesfully started on port 10001')
 }
 bootstrap();

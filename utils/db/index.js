@@ -1,20 +1,18 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-const init = () => {
+const init = async () => {
     const url = config.get('db').url;
     const dbname = config.get('db').dbName;
-    const dsn = `mongodb+srv://${url}/${dbname}?retryWrites=true&w=majority`;
-    mongoose.connect(
-        dsn,
-        err => {
-            if (err) {
-                return console.log('Could not connect to db', err);
-            }
-            console.log('Successfully connetcted to db');
-        }
-    )
-};
+    const dsn = `mongodb://${url}/${dbname}?retryWrites=true&w=majority`;
+    try {
+        await mongoose.connect(dsn);
+        console.log('Successfully connected to DB!');
+    } catch (error) {
+        console.error('Could not connect to DB:', error);
+        process.exit(1);
+    }
+}
 
 module.exports = {
     init
