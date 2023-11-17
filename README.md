@@ -50,7 +50,7 @@ $ npm run kill
 
 
 ### TO BE IMPLEMENTED AS A SCRIPT
-## Test
+## Test [script not implemented, files in test]
 
 ```bash
 # unit tests
