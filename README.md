@@ -40,7 +40,7 @@ $ docker-compose up
 $ npm run start:concurent
 ```
 
-## Running the app
+## Killing the app in case of a problem after Ctrl+c
 
 ```bash
 # If the app needs to be killed
