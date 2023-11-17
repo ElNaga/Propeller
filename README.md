@@ -30,7 +30,7 @@ $ npm install
 
 ## Running the app
 
-###The app connects to a MongoDB container exposed on 27017.
+### The app connects to a MongoDB container exposed on 27017.
 
 ```bash
 # Initialise the Docker mongo container:
