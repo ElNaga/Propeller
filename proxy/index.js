@@ -4,8 +4,6 @@ const proxy = require('express-http-proxy');
 
 const app = express();
 
-const localPort = 80;
-
 app.use(
     '/api/products',
     proxy(
