@@ -7,11 +7,21 @@ const app = express();
 const localPort = 80;
 
 app.use(
-    '/api',
+    '/api/products',
     proxy(
-        `http://127.0.0.1:${config.get('services').rest.port}`,
+        `http://127.0.0.1:${config.get('services').products.port}`,
         {
-            proxyReqPathResolver: (req) => `http://127.0.0.1:${config.get('services').rest.port}/api${req.url}`
+            proxyReqPathResolver: (req) => `http://127.0.0.1:${config.get('services').products.port}/api/products${req.url}`
+        }
+    )
+);
+
+app.use(
+    '/api/images',
+    proxy(
+        `http://127.0.0.1:${config.get('services').images.port}`,
+        {
+            proxyReqPathResolver: (req) => `http://127.0.0.1:${config.get('services').images.port}/api/images${req.url}`
         }
     )
 );

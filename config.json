@@ -1,7 +1,8 @@
 {
     "services": {
         "proxy": {"port": 80},
-        "rest": {"port": 10000},
+        "images": {"port": 10003},
+        "products": {"port": 10002},
         "graphql": {"port": 10001}
     },
     "db": {
