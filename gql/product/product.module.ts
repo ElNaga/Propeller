@@ -3,7 +3,7 @@ import { ProductResolver } from './product.resolver'
 import { ProductService } from './product.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './product.entity';
-import { ImageModule } from 'src/image/image.module';
+import { ImageModule } from 'gql/image/image.module';
 
 @Module({
     imports: [
