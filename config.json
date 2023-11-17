@@ -1,0 +1,11 @@
+{
+    "services": {
+        "proxy": {"port": 80},
+        "rest": {"port": 10000},
+        "graphql": {"port": 10001}
+    },
+    "db": {
+        "url": "localhost",
+        "dbName": "propeller"
+    }
+}
