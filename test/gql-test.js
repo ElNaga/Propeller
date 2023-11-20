@@ -1,3 +1,6 @@
+
+
+
 const axios = require('axios');
 const fs = require('fs');
 
@@ -15,6 +18,63 @@ const performGraphQLOperation = async (query, variables = {}) => {
 const testGraphQLEndpoints = async () => {
     const date = new Date();
     let results = '';
+    let createdProductId;
+    let createdImageId;
+
+    const createProductOperation = {
+        name: 'Create a new product',
+        query: `
+            mutation CreateProduct($input: CreateProductInput!) {
+                createProduct(input: $input) {
+                    id
+                    name
+                }
+            }
+        `,
+        variables: {
+            input: {
+                name: "New Product",
+                price: 20.99,
+                status: "active",
+                images: [] // Add image IDs if needed
+            }
+        }
+    };
+
+    const createImageOperation = {
+        name: 'Create a new image',
+        query: `
+            mutation CreateImage($input: CreateImageInput!) {
+                createImage(input: $input) {
+                    id
+                    url
+                }
+            }
+        `,
+        variables: {
+            input: {
+                url: "http://example.com/new-image.jpg",
+                priority: 100
+            }
+        }
+    };
+
+    try {
+        const productData = await performGraphQLOperation(createProductOperation.query, createProductOperation.variables);
+        createdProductId = productData.data.createProduct.id;
+        results += `SUCCESS - ${createProductOperation.name}: ${JSON.stringify(productData)}\n`;
+    } catch (error) {
+        results += `ERROR - ${createProductOperation.name}: ${error.message}\n`;
+    }
+
+    // Create a new image and capture its ID
+    try {
+        const imageData = await performGraphQLOperation(createImageOperation.query, createImageOperation.variables);
+        createdImageId = imageData.data.createImage.id;
+        results += `SUCCESS - ${createImageOperation.name}: ${JSON.stringify(imageData)}\n`;
+    } catch (error) {
+        results += `ERROR - ${createImageOperation.name}: ${error.message}\n`;
+    }
 
     const operations = [
         // Query all products
@@ -35,12 +95,12 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
         },
-        // Query a single product by ID (replace with an actual ID)
+        // Query a single product 
         {
             name: 'Query a single product by ID',
             query: `
-                query {
-                    product(id: "e4233343-8dfe-4512-b2ef-e958226fb5cb") {
+                query GetSingleProduct($id: String!) {
+                    product(id: $id) {
                         id
                         name
                         price
@@ -52,28 +112,11 @@ const testGraphQLEndpoints = async () => {
                     }
                 }
             `,
-        },
-        // Create a new product
-        {
-            name: 'Create a new product',
-            query: `
-                mutation CreateProduct($input: CreateProductInput!) {
-                    createProduct(input: $input) {
-                        id
-                        name
-                    }
-                }
-            `,
             variables: {
-                input: {
-                    name: "New Product",
-                    price: 20.99,
-                    status: "active",
-                    images: [] // Add image IDs if needed
-                }
+                id: createdProductId
             }
         },
-        // Update a product (replace ID)
+        // Update a product 
         {
             name: 'Update a product',
             query: `
@@ -85,7 +128,7 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
             variables: {
-                id: "e4233343-8dfe-4512-b2ef-e958226fb5cb",
+                id: createdProductId,
                 input: {
                     name: "Updated Product",
                     price: 25.99,
@@ -94,7 +137,7 @@ const testGraphQLEndpoints = async () => {
                 }
             }
         },
-        // Delete a product (replace ID)
+        // Delete a product 
         {
             name: 'Delete a product',
             query: `
@@ -103,7 +146,7 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
             variables: {
-                id: "e4233343-8dfe-4512-b2ef-e958226fb5cb"
+                id: createdProductId
             }
         },
         // Query all images
@@ -118,37 +161,22 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
         },
-        // Query a single image by ID (replace the ID)
+        // Query a single image b
         {
             name: 'Query a single image by ID',
             query: `
-                query {
-                    image(id: "ea4be732-ebe3-4aa8-afbb-e5c1894f719b") {
-                        id
-                        url
-                    }
-                }
-            `,
-        },
-        // Create a new image
-        {
-            name: 'Create a new image',
-            query: `
-                mutation CreateImage($input: CreateImageInput!) {
-                    createImage(input: $input) {
+                query GetSingleImage($id: String!) {
+                    image(id: $id) {
                         id
                         url
                     }
                 }
             `,
             variables: {
-                input: {
-                    url: "http://example.com/new-image.jpg",
-                    priority: 100
-                }
+                id: createdImageId
             }
         },
-        // Update an image (replace with an actual ID)
+        // Update an image 
         {
             name: 'Update an image',
             query: `
@@ -160,14 +188,14 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
             variables: {
-                id: "ea4be732-ebe3-4aa8-afbb-e5c1894f719b",
+                id: createdImageId,
                 input: {
                     url: "http://example.com/updated-image.jpg",
                     priority: 200
                 }
             }
         },
-        // Delete an image (replace with an actual ID)
+        // Delete an image with provided ID
         {
             name: 'Delete an image',
             query: `
@@ -176,11 +204,11 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
             variables: {
-                id: "ea4be732-ebe3-4aa8-afbb-e5c1894f719b"
+                id: createdImageId
             }
         }
     ];
-    
+
 
     for (const { name, query, variables } of operations) {
         try {

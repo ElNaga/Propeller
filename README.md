@@ -13,6 +13,14 @@ API tests (End-to-End) to verify the entire application flow. - [x] [implemented
 Unit tests for isolated service method validation. - [ ] [not properly implemented] <br />
 Integration tests ensuring combined components function correctly. - [ ] [not implemented] <br />
 
+### Project Structure
+
+gql/: Contains all GraphQL-related code, including resolvers.
+rest/: Houses the REST API implementation.
+tests/: Includes tests.
+image/: Specific implementation for image-related operations.
+product/: Dedicated to product management functionalities.
+
 The GraphQL endpoint is 
 ```
 http::/localhost/graphql
@@ -28,7 +36,7 @@ The images REST endpoint is
 http::/localhost/api/images
 ```
 
-Proxy is utilised to transfer requests. Since this is not running dockerised, the ports for the services are also EXPOSED. Make sure you don't have anything running on ports:
+Proxy is utilised to transfer requests. Since this is not running dockerised, the ports for the individual services are also EXPOSED. Make sure you don't have anything running on ports:
 ```
 80 | 10000 | 10001 | 10002 | 10003
 ```
