@@ -4,9 +4,9 @@ Hello Propeller Reviewer. This is the solution developed as part of my take-home
 
 Features
 
-GraphQL API: Implements a GraphQL server providing efficient and flexible data retrieval.
+GraphQL API: Implements a GraphQL server providing data retrieval.
 REST API: Includes RESTful endpoints for managing products and images, following standard HTTP methods.
-Database Integration: Utilizes TypeORM for seamless database interactions.
+Database Integration: Utilizes TypeORM for database interactions.
 UUID Implementation: E ach product and image is uniquely identified with a UUID. <br />
 Testing Suite:  <br />
 API tests (End-to-End) to verify the entire application flow. - [x] [implemented, as scripts] <br />
@@ -15,8 +15,8 @@ Integration tests - [ ] [not implemented] <br />
 
 ### Project Structure
 
-gql/: Contains all GraphQL-related code, including resolvers.
-rest/: Houses the REST API implementation.
+gql/: Contains all GraphQL-related code.
+rest/: REST API implementation.
 tests/: Includes tests.
 image/: Specific implementation for image-related operations.
 product/: Dedicated to product management functionalities.
