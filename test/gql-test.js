@@ -13,6 +13,7 @@ const performGraphQLOperation = async (query, variables = {}) => {
 };
 
 const testGraphQLEndpoints = async () => {
+    const date = new Date();
     let results = '';
 
     const operations = [
@@ -68,11 +69,11 @@ const testGraphQLEndpoints = async () => {
                     name: "New Product",
                     price: 20.99,
                     status: "active",
-                    images: [] // Add image IDs if necessary
+                    images: [] // Add image IDs if needed
                 }
             }
         },
-        // Update a product (replace with an actual ID)
+        // Update a product (replace ID)
         {
             name: 'Update a product',
             query: `
@@ -89,11 +90,11 @@ const testGraphQLEndpoints = async () => {
                     name: "Updated Product",
                     price: 25.99,
                     status: "inactive",
-                    images: [] // Update image IDs if necessary
+                    images: [] // Update image IDs if needed
                 }
             }
         },
-        // Delete a product (replace with an actual ID)
+        // Delete a product (replace ID)
         {
             name: 'Delete a product',
             query: `
@@ -117,7 +118,7 @@ const testGraphQLEndpoints = async () => {
                 }
             `,
         },
-        // Query a single image by ID (replace with an actual ID)
+        // Query a single image by ID (replace the ID)
         {
             name: 'Query a single image by ID',
             query: `
@@ -190,7 +191,8 @@ const testGraphQLEndpoints = async () => {
         }
     }
 
-    fs.writeFileSync('apiTestResults-graphql.txt', results);
+    fs.writeFileSync('apiTestResults-graphql.txt', results, { flag: 'a' });
+    fs.writeFileSync('apiTestResults-graphql.txt', `Tests were done on: ${date}\n\n`, { flag: 'a' });
     console.log('GraphQL API test results saved to apiTestResults-graphql.txt');
 };
 

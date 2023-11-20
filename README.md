@@ -49,9 +49,15 @@ $ npm run kill
 ```
 
 
-### TO BE IMPLEMENTED AS A SCRIPT
-## Test [script not implemented, files in test]
+### Not implemented properly, but you can run the commands. This is new to me, I was trying things out.
 
+## Test [Scripts for endpoints testing implemented, files in test]
+## This one creates files in main directory with the OUTPUT.
+```bash
+$ npm run test:endpoints
+```
+
+## Default commands from Nest Framework
 ```bash
 # unit tests
 $ npm run test
