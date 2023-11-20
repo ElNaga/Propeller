@@ -15,11 +15,11 @@ Integration tests - [ ] [not implemented] <br />
 
 ### Project Structure
 
-gql/: Contains all GraphQL-related code.
-rest/: REST API implementation.
-tests/: Includes tests.
-image/: Specific implementation for image-related operations.
-product/: Dedicated to product management functionalities.
+gql/: Contains all GraphQL-related code. <br />
+rest/: REST API implementation.<br />
+tests/: Includes tests.<br />
+image/: Specific implementation for image-related operations.<br />
+product/: Dedicated to product management functionalities.<br />
 
 The GraphQL endpoint is 
 ```
