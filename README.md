@@ -53,7 +53,7 @@ $ npm install
 
 ```bash
 # Initialise the Docker mongo container:
-$ docker-compose up
+$ docker-compose up --detach
 
 # run all services
 $ npm run start:concurent
