@@ -7,11 +7,11 @@ Features
 GraphQL API: Implements a GraphQL server providing efficient and flexible data retrieval.
 REST API: Includes RESTful endpoints for managing products and images, following standard HTTP methods.
 Database Integration: Utilizes TypeORM for seamless database interactions.
-UUID Implementation: Each product and image is uniquely identified with a UUID.
-Testing Suite: 
-API tests (End-to-End) to verify the entire application flow. - [x] [implemented, as scripts]
-Unit tests for isolated service method validation. - [ ] [not properly implemented]
-Integration tests ensuring combined components function correctly. - [ ] - [x] [not implemented]
+UUID Implementation: E ach product and image is uniquely identified with a UUID. <br />
+Testing Suite:  <br />
+API tests (End-to-End) to verify the entire application flow. - [x] [implemented, as scripts] <br />
+Unit tests for isolated service method validation. - [ ] [not properly implemented] <br />
+Integration tests ensuring combined components function correctly. - [ ] - [x] [not implemented] <br />
 
 The GraphQL endpoint is 
 ```
