@@ -1,6 +1,6 @@
 ## Description
 
-Hello Propeller Reviewer. This is the solution developed as part of my take-home assignment for Propeller. This project showcases my skills in building GQL API using NestJs, and also Makeing RESTful APIs using Node/Express in JS, implementing both GraphQL and RESTful services.
+Hello Propeller Reviewer. This is the solution developed as part of my take-home assignment for Propeller. This project showcases my skills in building GQL API using NestJs, and also Makeing RESTful APIs using Node/Express in JS, implementing both GraphQL and RESTful services, connected through a Proxy Server.
 
 Features
 
