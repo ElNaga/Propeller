@@ -1,6 +1,17 @@
 ## Description
 
-Propeller takehome 
+Hello Propeller Reviewer. This is the solution developed as part of my take-home assignment for Propeller. This project showcases my skills in building GQL API using NestJs, and also Makeing RESTful APIs using Node/Express in JS, implementing both GraphQL and RESTful services.
+
+Features
+
+GraphQL API: Implements a GraphQL server providing efficient and flexible data retrieval.
+REST API: Includes RESTful endpoints for managing products and images, following standard HTTP methods.
+Database Integration: Utilizes TypeORM for seamless database interactions.
+UUID Implementation: Each product and image is uniquely identified with a UUID.
+Testing Suite: 
+API tests (End-to-End) to verify the entire application flow. - [x] [implemented, as scripts]
+Unit tests for isolated service method validation. - [ ] [not properly implemented]
+Integration tests ensuring combined components function correctly. - [ ] - [x] [not implemented]
 
 The GraphQL endpoint is 
 ```
@@ -40,7 +51,7 @@ $ docker-compose up
 $ npm run start:concurent
 ```
 
-## Killing the app in case of a problem after Ctrl+c
+## Killing the app in case of a problem after Ctrl+c [Unix-only command... kills processes that work on specific ports]
 
 ```bash
 # If the app needs to be killed
