@@ -10,7 +10,7 @@ Database Integration: Utilizes TypeORM for seamless database interactions.
 UUID Implementation: E ach product and image is uniquely identified with a UUID. <br />
 Testing Suite:  <br />
 API tests (End-to-End) to verify the entire application flow. - [x] [implemented, as scripts] <br />
-Unit tests for isolated service method validation. - [ ] [not properly implemented] <br />
+Unit tests for isolated service method validation. - [ ] [not properly, neither fully implemented] <br />
 Integration tests ensuring combined components function correctly. - [ ] [not implemented] <br />
 
 ### Project Structure
